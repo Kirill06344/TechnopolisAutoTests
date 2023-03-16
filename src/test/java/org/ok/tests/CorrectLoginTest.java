@@ -3,13 +3,14 @@ package org.ok.tests;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.ok.pages.LoginPage;
+import org.ok.utils.SupportFunctions;
 import org.ok.utils.User;
 
 public class CorrectLoginTest extends BaseTest{
 
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
-    User user;
+    private User user;
 
     @BeforeAll
     public void initializeLoginPage() {
@@ -19,6 +20,6 @@ public class CorrectLoginTest extends BaseTest{
 
     @Test
     private void correctLogin() {
-
+        SupportFunctions.login(loginPage, user);
     }
 }
