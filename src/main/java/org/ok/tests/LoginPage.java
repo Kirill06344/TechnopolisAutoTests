@@ -10,11 +10,11 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
-    private final SelenideElement emailField = $x("//*[@id='field_email']");
+    private final SelenideElement emailField = Selenide.$x("//*[@id='field_email']");
 
-    private final SelenideElement passwordField = $x("//*[@id='field_password']");
+    private final SelenideElement passwordField = Selenide.$x("//*[@id='field_password']");
 
-    private final SelenideElement enterOk = $x("//*[@class='button-pro __wide']");
+    private final SelenideElement enterOk = Selenide.$x("//*[@class='button-pro __wide']");
     public LoginPage open() {
         Selenide.open("/");
         return this;
@@ -37,7 +37,7 @@ public class LoginPage {
     }
 
     public void isMessageWithIncorrectData() {
-        $x("//*[@class='input-e login_error']").shouldBe(Condition.visible);
+        Selenide.$x("//*[@class='input-e login_error']").shouldBe(Condition.visible);
     }
 
 }
