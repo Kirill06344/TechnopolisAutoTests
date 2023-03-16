@@ -10,34 +10,36 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
-    private final SelenideElement emailField = Selenide.$x("//*[@id='field_email']");
+    private final SelenideElement EMAIL_FIELD = Selenide.$x("//*[@id='field_email']");
 
-    private final SelenideElement passwordField = Selenide.$x("//*[@id='field_password']");
+    private final SelenideElement PASSWORD_FIELD = Selenide.$x("//*[@id='field_password']");
 
-    private final SelenideElement enterOk = Selenide.$x("//*[@class='button-pro __wide']");
+    private final SelenideElement TRANSITION_BUTTON = Selenide.$x("//*[@class='button-pro __wide']");
+
+    private final SelenideElement INCORRECT_DATA = Selenide.$x("//*[@class='input-e login_error']");
     public LoginPage open() {
         Selenide.open("/");
         return this;
     }
 
     public LoginPage setUserData(String email, String password) {
-        emailField.shouldBe(Condition.visible).setValue(email);
-        passwordField.shouldBe(Condition.visible).setValue(password);
+        EMAIL_FIELD.shouldBe(Condition.visible).setValue(email);
+        PASSWORD_FIELD.shouldBe(Condition.visible).setValue(password);
         return this;
     }
 
     public LoginPage enterWithClick() {
-        enterOk.shouldBe(Condition.visible).click();
+        TRANSITION_BUTTON.shouldBe(Condition.visible).click();
         return this;
     }
 
     public LoginPage enterWithButton() {
-        enterOk.shouldBe(Condition.visible).sendKeys(Keys.ENTER);
+        TRANSITION_BUTTON.shouldBe(Condition.visible).sendKeys(Keys.ENTER);
         return this;
     }
 
     public void isMessageWithIncorrectData() {
-        Selenide.$x("//*[@class='input-e login_error']").shouldBe(Condition.visible);
+        INCORRECT_DATA.shouldBe(Condition.visible);
     }
 
 }
