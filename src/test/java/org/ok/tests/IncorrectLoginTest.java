@@ -3,6 +3,7 @@ package org.ok.tests;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.ok.pages.LoginPage;
+import org.ok.utils.SupportFunctions;
 import org.ok.utils.User;
 
 public class IncorrectLoginTest extends BaseTest {
@@ -18,21 +19,17 @@ public class IncorrectLoginTest extends BaseTest {
     }
 
     @Test
-    public void incorrectUserDataWithClick() {
-        login(user);
+    public void incorrectLoginWithClick() {
+        SupportFunctions.login(loginPage, user);
         loginPage.enterWithClick();
         loginPage.isMessageWithIncorrectData();
     }
 
     @Test
-    public void incorrectUserDataWithKey() {
-        login(user);
+    public void incorrectLoginDataWithKey() {
+        SupportFunctions.login(loginPage, user);
         loginPage.enterWithButton();
         loginPage.isMessageWithIncorrectData();
     }
 
-    private void login(User user) {
-        loginPage.open()
-                .setUserData(user);
-    }
 }
