@@ -1,12 +1,11 @@
-package org.ok.tests;
+package org.ok.pages;
 
+import org.ok.utils.User;
 import org.openqa.selenium.Keys;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
@@ -22,9 +21,9 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage setUserData(String email, String password) {
-        EMAIL_FIELD.shouldBe(Condition.visible).setValue(email);
-        PASSWORD_FIELD.shouldBe(Condition.visible).setValue(password);
+    public LoginPage setUserData(User user) {
+        EMAIL_FIELD.shouldBe(Condition.visible).setValue(user.getLogin());
+        PASSWORD_FIELD.shouldBe(Condition.visible).setValue(user.getPassword());
         return this;
     }
 
