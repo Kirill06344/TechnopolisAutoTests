@@ -17,9 +17,8 @@ public class LoginPage implements LoadableComponent {
 
     private final SelenideElement INCORRECT_DATA = Selenide.$x("//*[@class='input-e login_error']");
 
-    public LoginPage open() {
-        Selenide.open("https://ok.ru/");
-        return this;
+    public LoginPage() {
+        checkExistense();
     }
 
     public LoginPage setUserData(User user) {
