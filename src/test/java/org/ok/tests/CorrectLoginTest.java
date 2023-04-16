@@ -1,6 +1,7 @@
 package org.ok.tests;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.ok.pages.LoginPage;
@@ -10,18 +11,14 @@ import org.ok.utils.User;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CorrectLoginTest extends BaseTest{
 
-    private LoginPage loginPage;
-
-    private User user;
-
-    @BeforeAll
+    @BeforeEach
     public void initializeLoginPage() {
-        loginPage = new LoginPage();
         user = new User("botS23AT2", "autotests2023");
     }
 
     @Test
     public void correctLogin() {
-        MainPage mainPage = loginPage.open().setUserData(user).enterWithButton();
+        LoginPage loginPage = new LoginPage();
+        MainPage mainPage = loginPage.setUserData(user).enterWithButton();
     }
 }
